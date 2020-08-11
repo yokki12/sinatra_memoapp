@@ -1,0 +1,15 @@
+<h1>Top</h1>
+
+<div class="main">
+  <ul>
+    <% @memo_titles.each do |title| %>
+    <li><a href><%= title %></a></li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="footer">
+  <form action="/new" method="get">
+    <input type='submit' value='New' class="btn-new">
+  </form>
+</div>

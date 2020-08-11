@@ -1,0 +1,23 @@
+<h1>Edit</h1>
+
+<div class="memo-edit">
+<div class="main">
+  <form action="/<%= @id %>" method="post">
+    <span>title:</span>
+    <input type='text' name='title' value="<%= @memo_title %>" class="memo-title">
+    <span>content:</span>
+    <textarea name='content' class="memo-content"><%= @memo_content %></textarea>
+    <div class="btns">
+      <input type='hidden' value='patch' name='_method'>
+      <input type='submit' value='Save' class="btn-save">
+    </div>
+</form>
+</div>
+
+<div class="footer">
+  <form action="/" method="get">
+    <input type='submit' value='Top' class="btn-top">
+  </form>
+</div>
+</div>
+

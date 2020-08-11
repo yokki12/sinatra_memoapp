@@ -1,0 +1,29 @@
+<h1>Show</h1>
+
+<div class="main">
+  <span>title:</span>
+  <div class="memo-title">
+    <%= @memo_title %>
+  </div>
+  <span>content:</span>
+  <div class="memo-content">
+    <%= @memo_content %>
+  </div>
+
+  <div class="btns">
+    <form action="/edit/<%= @id %>" method="get">
+      <input type='submit' value='Edit' class="btn-edit">
+    </form>
+
+    <form action="/show/<%= @id %>" method="post">
+      <input type="hidden" value='delete' name='_method'>
+      <input type="submit" value='Delete' class="btn-delete">
+    </form>
+  </div>
+</div>
+
+<div class="footer">
+  <form action="/" method="get">
+    <input type='submit' value='Top' class="btn-top">
+  </form>
+</div>

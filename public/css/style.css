@@ -1,0 +1,196 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+/* resetここまで */
+
+html{
+  font-family: "Arial Black", serif;
+}
+
+body {
+  color: skyblue;
+}
+
+.container {
+  width: 350px;
+  height: 450px;
+  margin: 20px auto;
+  box-shadow: 0 3px 10px -2px rgba(70, 16, 16, 0.3);
+}
+
+header {
+  font-size: 18px;
+  background-color: yellow;
+}
+
+.main {
+  height: 340px;
+  padding-top: 10px;
+}
+
+h1 {
+  font-size: 38px;
+  background-color: yellow;
+}
+
+ul {
+  color: #666;
+  list-style: "◼︎";
+  padding: 5px 10px 20px 38px;
+}
+
+li {
+  padding: 5px;
+  font-size: 18px;
+  vertical-align: top;
+}
+
+a {
+  text-decoration: none;
+  color: #777;
+}
+
+li:hover, a:hover {
+  color: #18A2B8;
+  font-weight: bold;
+}
+
+.memo-title {
+  line-height: 1.4;
+  font-family: "Arial Black", serif;
+  font-size: 18px;
+  width: 320px;
+  height: 30px;
+  padding-top: 2px;
+  padding-left: 3px;
+  margin-bottom: 10px;
+  color: #000;
+  background-color: #fff;
+  border-radius: 3px;;
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-left: 0px solid #ddd;
+}
+
+.memo-content {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  line-height: 1.8;
+  font-family: "Arial Black", serif;
+  font-size: 18px;
+  width: 320px;
+  height: 200px;
+  padding-top: 2px;
+  padding-left: 3px;
+  color: #000;
+  background-color: #fff;
+  border-radius: 3px;;
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-left: 0px solid #ddd;
+}
+
+.memo-edit {
+  background-color: #eee;
+}
+
+.delete-message {
+  margin-top: 10px;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+}
+
+input[type="submit"] {
+  display: inline-block;
+  font-family: "Arial Black", serif;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+}
+
+.btn-edit, .btn-save, .btn-delete {
+  background: skyblue;
+  width: 85px;
+  height: 38px;
+  border-radius: 5px;
+  margin: 10px 4px;
+}
+
+.btn-new {
+  background: skyblue;
+  width: 85px;
+  height: 38px;
+  border-radius: 5px;
+}
+
+.btn-top {
+  background: #ddd;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  margin-top: 2px;
+}
+
+.btn-new {
+  margin-top: 8px;
+}
+.btn-delete {
+  background: tomato;
+}
+.footer {
+  text-align: right;
+  margin-right: 8px;
+  height: 55px;
+}
