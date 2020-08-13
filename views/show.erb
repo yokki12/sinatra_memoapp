@@ -11,11 +11,11 @@
   </div>
 
   <div class="btns">
-    <form action="/edit/<%= @id %>" method="get">
+    <form action="/edit/<%= @memo_id %>" method="get">
       <input type='submit' value='Edit' class="btn-edit">
     </form>
 
-    <form action="/show/<%= @id %>" method="post">
+    <form action="/show/<%= @memo_id %>" method="post">
       <input type="hidden" value='delete' name='_method'>
       <input type="submit" value='Delete' class="btn-delete">
     </form>

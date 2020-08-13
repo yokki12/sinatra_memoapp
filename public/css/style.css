@@ -73,6 +73,8 @@ header {
 .main {
   height: 340px;
   padding-top: 10px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 h1 {
@@ -121,8 +123,6 @@ li:hover, a:hover {
 }
 
 .memo-content {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
   line-height: 1.8;
   font-family: "Arial Black", serif;
   font-size: 18px;

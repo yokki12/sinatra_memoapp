@@ -2,8 +2,8 @@
 
 <div class="main">
   <ul>
-    <% @memo_titles.each do |title| %>
-    <li><a href><%= title %></a></li>
+    <% @memo_titles.each do |id, title| %>
+    <li><a href='show/<%= id %>'><%= title %></a></li>
     <% end %>
   </ul>
 </div>
