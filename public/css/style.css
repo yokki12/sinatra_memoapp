@@ -166,21 +166,35 @@ input[type="submit"] {
   height: 38px;
   border-radius: 5px;
   margin: 10px 4px;
+  cursor: pointer;
 }
 
 .btn-new {
+  display: inline-block;
   background: skyblue;
   width: 85px;
   height: 38px;
   border-radius: 5px;
+  font-size: 16px;
+  padding-top: 11px;
+  padding-right: 22px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
 
 .btn-top {
+  display: inline-block;
   background: #ddd;
   border-radius: 50%;
   width: 45px;
   height: 45px;
   margin-top: 2px;
+  font-size: 16px;
+  padding-top: 14px;
+  padding-right: 6px;
+  color: #fff;
+  border: none;
 }
 
 .btn-new {
