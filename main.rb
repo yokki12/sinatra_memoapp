@@ -1,58 +1,45 @@
 require 'sinatra'
 require 'sinatra/reloader'
-require 'json'
+require 'pg'
 
 class Memo
   class << self
-    def read_json
-      File.open("memo.json", "r") do |file|
-        @memos = JSON.load(file)
-      end
-    end
-
-    def write_json
-      str = JSON.pretty_generate(@memos)
-      File.open("memo.json", "w") do |file|
-        file.puts(str)
-      end
-    end
-    
     def titles
-      read_json
       memo_titles = {}
-      @memos.each do |id, memo|
-        memo_titles[id] = memo["title"]
+      conn = PG.connect( dbname: 'memoapp' )
+      result = conn.exec( "SELECT id, title FROM memos")
+      result.each do |record|
+        memo_titles[record["id"]]=record["title"]
       end
       memo_titles
     end
-
+    
     def title(id)
-      @memos[id]["title"]
+      conn = PG.connect( dbname: 'memoapp' )
+      result = conn.exec( "SELECT title FROM memos WHERE id = $1", [id])
+      result[0]["title"]
     end
-
+    
     def content(id)
-      @memos[id]["content"]
+      conn = PG.connect( dbname: 'memoapp' )
+      result = conn.exec( "SELECT content FROM memos WHERE id = $1", [id])
+      result[0]["content"]
     end
-
+        
     def add_memo(title, content)
-      read_json
-      id = Time.new.strftime("%Y-%m-%d %H:%M:%S")
+      conn = PG.connect( dbname: 'memoapp' )
       title = "no_title" if title == ""
-      @memos[id]={"title"=>title,"content"=>content}
-      write_json
+      conn.exec( "INSERT INTO memos (title, content) VALUES ($1, $2)", [title, content] )
     end
-
+    
     def delete_memo(id)
-      read_json
-      @memos.delete(id)
-      write_json
+      conn = PG.connect( dbname: 'memoapp' )
+      conn.exec( "DELETE FROM memos WHERE id = $1", [id] )
     end
-
+    
     def edit_memo(id, title, content)
-      read_json
-      @memos[id]["title"] = title
-      @memos[id]["content"] = content
-      write_json
+      conn = PG.connect( dbname: 'memoapp' )
+      conn.exec( "UPDATE memos SET title = $1, content = $2 WHERE id = $3", [title, content, id] )
     end
   end
 end
@@ -88,6 +75,7 @@ end
 
 delete '/show/:id' do
   @memo_id = params[:id]
+  @memo_title = Memo.title(@memo_id)
   Memo.delete_memo(@memo_id)
   erb :delete
 end 
