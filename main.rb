@@ -30,7 +30,7 @@ class Memo
 
     def add_memo(title, content)
       title = 'no_title' if title == ''
-      connectdb('INSERT INTO memos (title, content) VALUES ($1, $2)', [title, content])
+      connectdb('INSERT INTO memos (title, content) VALUES ($1, $2)', [title, content]) # rubocop:disable Layout/LineLength
     end
 
     def delete_memo(id)
@@ -38,7 +38,7 @@ class Memo
     end
 
     def edit_memo(id, title, content)
-      connectdb('UPDATE memos SET title = $1, content = $2 WHERE id = $3', [title, content, id])
+      connectdb('UPDATE memos SET title = $1, content = $2 WHERE id = $3', [title, content, id]) # rubocop:disable Layout/LineLength
     end
   end
 end
