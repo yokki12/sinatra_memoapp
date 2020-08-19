@@ -1,45 +1,44 @@
+# frozen_string_literal: true
+
 require 'sinatra'
 require 'sinatra/reloader'
 require 'pg'
 
+# Memo data
 class Memo
   class << self
+    def connectdb(*sql)
+      PG.connect(dbname: 'memoapp').exec(*sql)
+    end
+
     def titles
       memo_titles = {}
-      conn = PG.connect( dbname: 'memoapp' )
-      result = conn.exec( "SELECT id, title FROM memos")
+      result = connectdb('SELECT id, title FROM memos')
       result.each do |record|
-        memo_titles[record["id"]]=record["title"]
+        memo_titles[record['id']] = record['title']
       end
       memo_titles
     end
-    
+
     def title(id)
-      conn = PG.connect( dbname: 'memoapp' )
-      result = conn.exec( "SELECT title FROM memos WHERE id = $1", [id])
-      result[0]["title"]
+      connectdb('SELECT title FROM memos WHERE id = $1', [id])[0]['title']
     end
-    
+
     def content(id)
-      conn = PG.connect( dbname: 'memoapp' )
-      result = conn.exec( "SELECT content FROM memos WHERE id = $1", [id])
-      result[0]["content"]
+      connectdb('SELECT content FROM memos WHERE id = $1', [id])[0]['content']
     end
-        
+
     def add_memo(title, content)
-      conn = PG.connect( dbname: 'memoapp' )
-      title = "no_title" if title == ""
-      conn.exec( "INSERT INTO memos (title, content) VALUES ($1, $2)", [title, content] )
+      title = 'no_title' if title == ''
+      connectdb('INSERT INTO memos (title, content) VALUES ($1, $2)', [title, content])
     end
-    
+
     def delete_memo(id)
-      conn = PG.connect( dbname: 'memoapp' )
-      conn.exec( "DELETE FROM memos WHERE id = $1", [id] )
+      connectdb('DELETE FROM memos WHERE id = $1', [id])
     end
-    
+
     def edit_memo(id, title, content)
-      conn = PG.connect( dbname: 'memoapp' )
-      conn.exec( "UPDATE memos SET title = $1, content = $2 WHERE id = $3", [title, content, id] )
+      connectdb('UPDATE memos SET title = $1, content = $2 WHERE id = $3', [title, content, id])
     end
   end
 end
@@ -78,7 +77,7 @@ delete '/show/:id' do
   @memo_title = Memo.title(@memo_id)
   Memo.delete_memo(@memo_id)
   erb :delete
-end 
+end
 
 get '/edit/:id' do
   @title = 'Edit'
